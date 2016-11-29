@@ -14,7 +14,13 @@ namespace TestOfWebClient
         {
             string rainManURI = "http://rainman.leanpoker.org/rank";
             var webClient = new WebClient();
-            var data = "[{ \"rank\":\"5\",\"suit\":\"diamonds\"} ]";
+            var cardsData =
+                @"cards=[{ ""rank"":""5"",""suit"":""diamonds""},
+    { ""rank"":""6"",""suit"":""diamonds""},
+    { ""rank"":""7"",""suit"":""diamonds""},
+    { ""rank"":""7"",""suit"":""spades""},
+    { ""rank"":""8"",""suit"":""diamonds""},
+    { ""rank"":""9"",""suit"":""diamonds"" }]";
 
             webClient.Headers["Content-Type"] = "application/x-www-form-urlencoded";
 
@@ -22,7 +28,7 @@ namespace TestOfWebClient
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
 
-            string postData = "cards=" + data;
+            string postData = cardsData;
             ASCIIEncoding encoding = new ASCIIEncoding();
             byte[] byte1 = encoding.GetBytes(postData);
             request.ContentLength = byte1.Length;
